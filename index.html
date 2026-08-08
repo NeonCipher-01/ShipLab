@@ -1,589 +1,1462 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShipLab — AI Engineering & Systems Partner</title>
-  <meta name="description" content="ShipLab designs, builds, and deploys production AI systems around the workflows that matter most to your business.">
-  <meta property="og:title" content="ShipLab — AI Engineering & Systems Partner">
-  <meta property="og:description" content="We turn high-value business workflows into production AI systems.">
+  <title>ShipLab ΓÇö AI Engineering Studio</title>
+  <meta name="description"
+    content="ShipLab is an AI engineering studio that builds AI agents, custom AI software, and SaaS MVPs for ambitious companies.">
+  <meta property="og:title" content="ShipLab ΓÇö AI Engineering Studio">
+  <meta property="og:description"
+    content="We build AI products that solve real business problems. AI agents, custom software, and SaaS MVPs.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #08090B; --surface: #111318; --elevated: #171A21;
-      --text: #F5F7FA; --text-sec: #8B93A1; --text-dim: #4A5163;
-      --accent: #6C8CFF; --accent-hi: #8FA7FF; --accent-faint: rgba(108,140,255,0.08);
-      --accent-border: rgba(108,140,255,0.2);
-      --bdr: #252A34; --bdr-hi: #2E3544;
-      --r-sm: 8px; --r: 14px; --r-lg: 18px;
-      --ff: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --fm: 'JetBrains Mono', 'SF Mono', monospace;
-      --mw: 1240px;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--ff); font-weight: 400; line-height: 1.65; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
-    ::selection { background: var(--accent); color: #08090B; }
-    [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-    [data-reveal].in-view { opacity: 1; transform: translateY(0); }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } [data-reveal] { opacity: 1; transform: none; } }
-    .eyebrow { font-family: var(--fm); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 8px; }
-    .eyebrow .idx { color: var(--text-dim); }
-    h1, h2, h3 { font-family: var(--ff); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
-    h4 { font-family: var(--ff); font-weight: 600; letter-spacing: -0.02em; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--ff); font-weight: 600; font-size: 0.88rem; padding: 0 28px; height: 50px; border-radius: var(--r-sm); text-decoration: none; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); cursor: pointer; border: 1px solid transparent; white-space: nowrap; letter-spacing: -0.01em; }
-    .btn-primary { background: var(--accent); color: #08090B; font-weight: 700; }
-    .btn-primary:hover { background: var(--accent-hi); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(108,140,255,0.25); }
-    .btn-primary .arr { transition: transform 0.2s ease; display: inline-block; }
-    .btn-primary:hover .arr { transform: translateX(3px); }
-    .btn-ghost { border-color: var(--bdr-hi); color: var(--text); background: transparent; }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
-    .btn-outline { border-color: var(--accent-border); color: var(--accent); background: transparent; font-size: 0.8rem; padding: 0 18px; height: 38px; font-weight: 500; border-radius: var(--r-sm); }
-    .btn-outline:hover { background: var(--accent-faint); border-color: var(--accent); }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 6vw; height: 64px; background: rgba(8,9,11,0.8); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--bdr); transition: background 0.3s ease; }
-    .logo { display: flex; align-items: center; gap: 10px; }
-    .logo-img { height: 26px; width: auto; }
-    .nav-links { display: flex; gap: 36px; }
-    .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--text-sec); transition: color 0.2s ease; position: relative; letter-spacing: -0.01em; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--accent); transition: width 0.25s ease; }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; padding: 4px; }
-    @media (max-width: 860px) { .nav-links, .nav-cta-desktop { display: none; } .nav-toggle { display: block; } }
-    .section-frame { display: grid; grid-template-columns: 200px 1fr; gap: 64px; max-width: var(--mw); margin: 0 auto; padding: 140px 6vw; }
-    .frame-side { position: sticky; top: 100px; align-self: start; }
-    .frame-side h2 { font-size: clamp(1.6rem,2.5vw,2.2rem); margin-top: 16px; line-height: 1.2; letter-spacing: -0.03em; }
-    .frame-lede { color: var(--text-sec); font-size: 0.88rem; margin-top: 16px; max-width: 240px; line-height: 1.6; }
-    @media (max-width: 860px) { .section-frame { grid-template-columns: 1fr; gap: 28px; padding: 80px 6vw; } .frame-side { position: static; } .frame-lede { max-width: none; } }
-    .section-divider { max-width: var(--mw); margin: 0 auto; padding: 0 6vw; }
-    .section-divider svg { width: 100%; height: 1px; opacity: 0.3; }
-    .hero { min-height: 100vh; display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 80px; padding: 160px 6vw 100px; max-width: var(--mw); margin: 0 auto; position: relative; }
-    .hero::before { content: ''; position: fixed; top: -300px; left: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(108,140,255,0.04) 0%, transparent 60%); pointer-events: none; z-index: 0; }
-    .hero>* { position: relative; z-index: 1; }
-    .hero-eyebrow { font-family: var(--fm); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
-    .hero-eyebrow span { color: var(--accent); }
-    .hero h1 { font-size: clamp(3.5rem,7vw,7rem); line-height: 0.98; margin-bottom: 28px; letter-spacing: -0.04em; }
-    .hero p { font-size: 1.05rem; color: var(--text-sec); max-width: 480px; margin-bottom: 44px; line-height: 1.7; }
-    .hero-cta-group { display: flex; gap: 12px; flex-wrap: wrap; }
-    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding-top: 130px; gap: 48px; } .hero h1 { font-size: clamp(2.4rem,8vw,3.6rem); } .hero-visual { order: -1; max-width: 360px; margin: 0 auto 12px; } }
-    .system-flow { font-family: var(--fm); font-size: 0.72rem; line-height: 2.4; color: var(--text-dim); text-align: center; letter-spacing: 0.04em; }
-    .system-flow .flow-label { padding: 6px 18px; border: 1px solid var(--bdr); border-radius: var(--r-sm); background: var(--surface); color: var(--text-sec); transition: border-color 0.4s ease, color 0.4s ease; display: inline-block; margin-bottom: 2px; }
-    .system-flow .flow-label.active { border-color: var(--accent-border); color: var(--accent); background: var(--accent-faint); }
-    .system-flow .flow-arrow { color: var(--accent); opacity: 0.35; font-size: 0.6rem; display: block; margin-bottom: 2px; }
-    .positioning-section { padding: 100px 6vw 80px; max-width: var(--mw); margin: 0 auto; text-align: center; }
-    .positioning-section h2 { font-size: clamp(1.8rem,4vw,3rem); margin-bottom: 24px; line-height: 1.1; letter-spacing: -0.035em; }
-    .positioning-section .pos-copy { color: var(--text-sec); font-size: 1rem; max-width: 580px; margin: 0 auto 52px; line-height: 1.75; }
-    .positioning-flow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
-    .positioning-flow .pf-item { font-family: var(--fm); font-size: 0.68rem; letter-spacing: 0.06em; color: var(--text-sec); padding: 7px 14px; border: 1px solid var(--bdr); border-radius: var(--r-sm); background: var(--surface); }
-    .positioning-flow .pf-arrow { color: var(--accent); opacity: 0.35; font-size: 0.6rem; padding: 0 6px; }
-    .positioning-flow .pf-item:first-child, .positioning-flow .pf-item:last-child { border-color: var(--accent-border); color: var(--accent); }
-    .positioning-section .pos-statement { font-size: clamp(0.95rem,1.8vw,1.2rem); color: var(--text); font-weight: 600; letter-spacing: -0.015em; max-width: 520px; margin: 0 auto; line-height: 1.45; }
-    @media (max-width: 700px) { .positioning-flow { flex-direction: column; gap: 0; } .positioning-flow .pf-arrow { transform: rotate(90deg); padding: 4px 0; } }
-    .systems-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 52px; }
-    .systems-grid .card:last-child:nth-child(odd) { grid-column: 1 / -1; }
-    .card { background: var(--surface); border: 1px solid var(--bdr); border-radius: var(--r); padding: 36px; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; }
-    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0; transition: opacity 0.3s ease; }
-    .card:hover { border-color: var(--accent-border); background: var(--elevated); }
-    .card:hover::before { opacity: 1; }
-    .card-num { font-family: var(--fm); font-size: 0.64rem; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 16px; text-transform: uppercase; }
-    .card h3 { font-size: 1.05rem; margin-bottom: 10px; line-height: 1.3; letter-spacing: -0.02em; }
-    .card-desc { font-size: 0.86rem; color: var(--text-sec); line-height: 1.65; margin-bottom: 20px; }
-    .card-list { display: flex; flex-wrap: wrap; gap: 6px; }
-    .card-list li { font-family: var(--fm); font-size: 0.68rem; color: var(--text-dim); padding: 4px 11px; border: 1px solid var(--bdr); border-radius: 100px; transition: border-color 0.2s ease, color 0.2s ease; }
-    .card:hover .card-list li { border-color: var(--bdr-hi); color: var(--text-sec); }
-    @media (max-width: 700px) { .systems-grid { grid-template-columns: 1fr; } .systems-grid .card:last-child:nth-child(odd) { grid-column: auto; } }
-    .featured-system { padding: 140px 6vw; max-width: var(--mw); margin: 0 auto; }
-    .featured-header { margin-bottom: 52px; }
-    .featured-header .eyebrow { margin-bottom: 16px; }
-    .featured-header h2 { font-size: clamp(1.6rem,2.5vw,2.2rem); line-height: 1.2; letter-spacing: -0.03em; }
-    .featured-header p { color: var(--text-sec); font-size: 0.92rem; margin-top: 16px; max-width: 560px; line-height: 1.7; }
-    .featured-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .featured-flow { background: var(--surface); border: 1px solid var(--bdr); border-radius: var(--r); padding: 32px; }
-    .featured-flow-title { font-family: var(--fm); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 24px; }
-    .featured-flow-steps { display: flex; flex-direction: column; }
-    .featured-flow-step { display: flex; align-items: center; gap: 16px; padding: 12px 0; position: relative; }
-    .featured-flow-step:not(:last-child)::after { content: ''; position: absolute; left: 11px; top: 36px; bottom: -12px; width: 1px; background: linear-gradient(180deg, var(--accent-border), var(--bdr)); }
-    .ff-dot { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--accent-border); background: var(--bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .ff-dot-inner { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.7; }
-    .featured-flow-step:last-child .ff-dot { border-color: var(--accent); background: var(--accent-faint); }
-    .featured-flow-step:last-child .ff-dot-inner { opacity: 1; }
-    .ff-label { font-family: var(--fm); font-size: 0.72rem; color: var(--text-sec); letter-spacing: 0.02em; }
-    .featured-capabilities { display: flex; flex-direction: column; gap: 14px; }
-    .featured-cap { background: var(--surface); border: 1px solid var(--bdr); border-radius: var(--r); padding: 24px; transition: border-color 0.3s ease; }
-    .featured-cap:hover { border-color: var(--accent-border); }
-    .featured-cap h4 { font-size: 0.92rem; margin-bottom: 6px; color: var(--text); }
-    .featured-cap p { font-size: 0.84rem; color: var(--text-sec); line-height: 1.6; }
-    .featured-label { font-family: var(--fm); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--bdr); }
-    @media (max-width: 860px) { .featured-layout { grid-template-columns: 1fr; } }
-    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 52px; }
-    .project-card { background: var(--surface); border: 1px solid var(--bdr); border-radius: var(--r); overflow: hidden; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
-    .project-card:hover { border-color: var(--accent-border); }
-    .project-thumb { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-family: var(--fm); font-size: 1rem; color: var(--text-dim); background: var(--elevated); border-bottom: 1px solid var(--bdr); position: relative; overflow: hidden; }
-    .project-thumb-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; z-index: 1; }
-    .project-thumb-icon { font-size: 1.6rem; opacity: 0.25; }
-    .project-body { padding: 24px; }
-    .project-body h3 { font-size: 0.95rem; margin-bottom: 8px; letter-spacing: -0.02em; }
-    .project-body > p { font-size: 0.82rem; color: var(--text-sec); line-height: 1.6; margin-bottom: 14px; }
-    .project-meta { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-    .project-meta-item { display: flex; gap: 8px; }
-    .project-meta-label { font-family: var(--fm); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); min-width: 68px; }
-    .project-meta-value { font-size: 0.8rem; color: var(--text-sec); }
-    .project-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
-    .project-tech span { font-family: var(--fm); font-size: 0.62rem; color: var(--text-dim); padding: 3px 10px; border: 1px solid var(--bdr); border-radius: 100px; }
-    .project-links { display: flex; gap: 8px; }
-    @media (max-width: 1100px) { .project-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 700px) { .project-grid { grid-template-columns: 1fr; } }
-    .process-timeline { margin-top: 52px; display: flex; flex-direction: column; }
-    .process-step { display: grid; grid-template-columns: 60px 1fr; gap: 28px; padding: 28px 0; position: relative; }
-    .process-step:not(:last-child)::after { content: ''; position: absolute; left: 29px; top: 72px; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--accent-border), var(--bdr)); }
-    .process-num { font-family: var(--fm); font-size: 1.1rem; font-weight: 700; color: var(--accent); line-height: 1; margin-top: 4px; transition: transform 0.3s ease; display: inline-block; }
-    .process-content h4 { font-size: 1rem; margin-bottom: 4px; letter-spacing: -0.02em; }
-    .process-content p { color: var(--text-sec); font-size: 0.86rem; max-width: 460px; line-height: 1.6; }
-    .process-step:hover .process-num { transform: scale(1.1); }
-    .process-step.compound-step .process-num { color: var(--accent-hi); font-size: 1.2rem; }
-    .process-step.compound-step .process-content h4 { color: var(--accent-hi); }
-    .process-step.compound-step .process-content p { color: var(--text); }
-    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 52px; }
-    .why-grid .card { padding: 32px; }
-    .why-grid .card .eyebrow { font-size: 0.64rem; margin-bottom: 12px; }
-    .why-grid .card .card-desc { font-size: 0.84rem; }
-    @media (max-width: 860px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 700px) { .why-grid { grid-template-columns: 1fr; } }
-    .tech-section { padding: 120px 6vw; max-width: var(--mw); margin: 0 auto; }
-    .tech-header { margin-bottom: 52px; }
-    .tech-header h2 { font-size: clamp(1.6rem,2.5vw,2.2rem); margin-top: 16px; line-height: 1.2; letter-spacing: -0.03em; }
-    .tech-note { font-family: var(--fm); font-size: 0.78rem; color: var(--text-dim); margin-top: 16px; font-style: italic; }
-    .tech-categories { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-    .tech-cat { background: var(--surface); border: 1px solid var(--bdr); border-radius: var(--r); padding: 24px; transition: border-color 0.3s ease; }
-    .tech-cat:hover { border-color: var(--accent-border); }
-    .tech-cat-label { font-family: var(--fm); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-    .tech-cat-items { font-size: 0.86rem; color: var(--text-sec); line-height: 1.8; }
-    @media (max-width: 860px) { .tech-categories { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .tech-categories { grid-template-columns: 1fr; } }
-    .industry-section { padding: 120px 6vw; max-width: var(--mw); margin: 0 auto; }
-    .industry-header { margin-bottom: 52px; }
-    .industry-header h2 { font-size: clamp(1.6rem,2.5vw,2.2rem); margin-top: 16px; line-height: 1.2; letter-spacing: -0.03em; }
-    .industry-focus { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
-    .industry-main { background: var(--surface); border: 1px solid var(--accent-border); border-radius: var(--r); padding: 40px; }
-    .industry-main h3 { font-size: 1.2rem; margin-bottom: 16px; color: var(--text); letter-spacing: -0.02em; }
-    .industry-main p { color: var(--text-sec); font-size: 0.9rem; line-height: 1.7; }
-    .industry-capabilities { display: flex; flex-direction: column; gap: 12px; }
-    .industry-cap { background: var(--surface); border: 1px solid var(--bdr); border-radius: var(--r); padding: 20px 24px; display: flex; align-items: center; gap: 14px; transition: border-color 0.3s ease; }
-    .industry-cap:hover { border-color: var(--accent-border); }
-    .industry-cap-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-    .industry-cap span { font-size: 0.88rem; color: var(--text-sec); }
-    .industry-note { font-family: var(--fm); font-size: 0.76rem; color: var(--text-dim); margin-top: 28px; font-style: italic; }
-    @media (max-width: 860px) { .industry-focus { grid-template-columns: 1fr; } }
-    .about-inner { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; margin-top: 52px; }
-    .about-avatar { width: 100%; aspect-ratio: 1; border-radius: var(--r); border: 1px solid var(--accent-border); overflow: hidden; }
-    .about-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .about-content h3 { font-size: 1.2rem; margin-bottom: 16px; letter-spacing: -0.02em; }
-    .about-content p { color: var(--text-sec); font-size: 0.92rem; margin-bottom: 14px; line-height: 1.7; max-width: 580px; }
-    @media (max-width: 700px) { .about-inner { grid-template-columns: 1fr; } .about-avatar { max-width: 160px; } }
-    .vision-section { padding: 120px 6vw; max-width: var(--mw); margin: 0 auto; text-align: center; }
-    .vision-section h2 { font-size: clamp(1.8rem,4vw,3rem); margin-bottom: 20px; line-height: 1.05; letter-spacing: -0.035em; }
-    .vision-flow { font-family: var(--fm); font-size: 0.72rem; line-height: 2.6; color: var(--text-dim); margin: 44px auto; max-width: 300px; }
-    .vision-flow .vf-node { padding: 6px 16px; border: 1px solid var(--bdr); border-radius: var(--r-sm); background: var(--surface); color: var(--text-sec); display: inline-block; margin-bottom: 2px; }
-    .vision-flow .vf-node.hl { border-color: var(--accent-border); color: var(--accent); background: var(--accent-faint); }
-    .vision-flow .vf-arrow { color: var(--accent); opacity: 0.35; font-size: 0.6rem; display: block; margin-bottom: 2px; }
-    .vision-copy { font-size: clamp(0.95rem,1.8vw,1.15rem); color: var(--text); font-weight: 500; max-width: 480px; margin: 0 auto; line-height: 1.8; letter-spacing: -0.015em; }
-    .vision-copy span { display: block; }
-    .final-cta { padding: 140px 6vw; text-align: center; position: relative; border-top: 1px solid var(--bdr); overflow: hidden; }
-    .final-cta::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(108,140,255,0.06) 0%, transparent 65%); pointer-events: none; }
-    .final-cta .eyebrow { justify-content: center; margin-bottom: 20px; }
-    .final-cta h2 { font-size: clamp(2rem,4.5vw,3.2rem); max-width: 640px; margin: 0 auto 16px; line-height: 1.08; letter-spacing: -0.035em; }
-    .final-cta>p { color: var(--text-sec); margin-bottom: 40px; font-size: 1rem; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .final-cta .cta-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .faq-section { padding: 120px 6vw; max-width: 860px; margin: 0 auto; }
-    .faq-header { margin-bottom: 52px; }
-    .faq-header h2 { font-size: clamp(1.6rem,2.5vw,2.2rem); margin-top: 16px; line-height: 1.2; letter-spacing: -0.03em; }
-    .faq-list { display: flex; flex-direction: column; }
-    .faq-item { border-bottom: 1px solid var(--bdr); padding: 24px 0; }
-    .faq-item:first-child { border-top: 1px solid var(--bdr); }
-    .faq-q { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
-    .faq-a { font-size: 0.88rem; color: var(--text-sec); line-height: 1.7; }
-    footer { border-top: 1px solid var(--bdr); padding: 64px 6vw 32px; }
-    .footer-grid { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 40px; padding-bottom: 40px; }
-    .footer-brand p { color: var(--text-dim); font-size: 0.82rem; margin-top: 12px; max-width: 240px; line-height: 1.6; }
-    .footer-process { font-family: var(--fm); font-size: 0.6rem; color: var(--text-dim); margin-top: 16px; letter-spacing: 0.04em; }
-    .footer-col h5 { font-family: var(--fm); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 18px; }
-    .footer-col a { display: block; color: var(--text-sec); font-size: 0.82rem; margin-bottom: 10px; transition: color 0.2s ease; width: fit-content; }
-    .footer-col a:hover { color: var(--accent); }
-    .footer-bottom { max-width: var(--mw); margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--bdr); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.74rem; color: var(--text-dim); }
-    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } .footer-brand { grid-column: 1 / -1; } }
+
+    :root {
+      --bg-base: #0D0D0D;
+      --bg-elevated: #131313;
+      --bg-card: #181818;
+      --bg-inset: #0A0A0A;
+      --accent: #FF6B35;
+      --accent-dim: #FF9F1C;
+      --accent-glow: rgba(255, 107, 53, 0.12);
+      --accent-faint: rgba(255, 107, 53, 0.06);
+      --accent-border: rgba(255, 107, 53, 0.2);
+      --text-primary: #EDF1F8;
+      --text-muted: #7A8499;
+      --text-faint: #434D62;
+      --border: #161C28;
+      --border-bright: #222C3E;
+      --radius-sm: 8px;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #000;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-reveal].in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eyebrow .idx {
+      color: var(--text-faint);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 12px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+    }
+
+    .btn-ghost {
+      border-color: var(--border-bright);
+      color: var(--text-primary);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: var(--accent-border);
+      color: var(--accent);
+      background: transparent;
+      font-size: 0.82rem;
+      padding: 8px 18px;
+      font-weight: 500;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-faint);
+      border-color: var(--accent);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 6vw;
+      background: rgba(13, 13, 13, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-img {
+      height: 28px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links,
+      .nav-cta-desktop {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    .section-frame {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 60px;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 120px 6vw;
+    }
+
+    .frame-side {
+      position: sticky;
+      top: 110px;
+      align-self: start;
+    }
+
+    .frame-side h2 {
+      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+      margin-top: 14px;
+      line-height: 1.15;
+    }
+
+    .frame-lede {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 14px;
+      max-width: 240px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 860px) {
+      .section-frame {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 80px 6vw;
+      }
+
+      .frame-side {
+        position: static;
+      }
+
+      .frame-lede {
+        max-width: none;
+      }
+    }
+
+    .section-divider {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 6vw;
+    }
+
+    .section-divider svg {
+      width: 100%;
+      height: 1px;
+      opacity: 0.25;
+    }
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(90px);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+      padding: 140px 6vw 80px;
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--accent-border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      margin-bottom: 32px;
+      background: var(--accent-faint);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2.2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .4; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .accent-text {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-num span {
+      color: var(--accent);
+    }
+
+    .hero-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 120px;
+        gap: 40px;
+      }
+
+      .hero-graph {
+        order: -1;
+        max-width: 420px;
+        margin: 0 auto 20px;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+    }
+
+    .hero-graph svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .marquee-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 16px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 32s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0 36px;
+      flex-shrink: 0;
+    }
+
+    .marquee-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-border);
+      box-shadow: 0 20px 48px rgba(255, 107, 53, 0.06), 0 0 0 1px var(--accent-border);
+      background: var(--bg-elevated);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-num {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .card-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .card-list li {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .card:hover .card-list li {
+      border-color: var(--border-bright);
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 700px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-border);
+      box-shadow: 0 20px 48px rgba(255, 107, 53, 0.06);
+    }
+
+    .project-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      color: var(--text-faint);
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, var(--bg-card) 100%);
+    }
+
+    .project-card:hover .project-thumb {
+      background: var(--bg-inset);
+    }
+
+    .project-thumb-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-thumb-icon {
+      font-size: 1.8rem;
+      opacity: 0.3;
+    }
+
+    .project-body {
+      padding: 24px;
+    }
+
+    .project-body h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .project-body p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .project-tech span {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    @media (max-width: 1100px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .process-timeline {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 28px;
+      padding: 28px 0;
+      position: relative;
+    }
+
+    .process-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 29px;
+      top: 70px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--accent-border), var(--border));
+    }
+
+    .process-step:last-child .process-line {
+      display: none;
+    }
+
+    .process-num {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .process-content h4 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .process-content p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    .process-step:hover .process-num {
+      transform: scale(1.1);
+    }
+
+    .process-num {
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .why-grid .card {
+      padding: 28px;
+    }
+
+    .why-grid .card .eyebrow {
+      font-size: 0.68rem;
+      margin-bottom: 12px;
+    }
+
+    .why-grid .card .card-desc {
+      font-size: 0.86rem;
+    }
+
+    .why-grid .card:last-child:nth-child(3n-1) {
+      grid-column: span 1;
+    }
+
+    @media (max-width: 860px) {
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 48px;
+    }
+
+    .about-avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--radius);
+      border: 1px solid var(--accent-border);
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(255, 107, 53, 0.06);
+    }
+
+    .about-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .about-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .about-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      background: var(--accent-faint);
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+      padding: 5px 14px;
+      border-radius: 100px;
+    }
+
+    @media (max-width: 700px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .about-avatar {
+        max-width: 160px;
+      }
+    }
+
+    .final-cta {
+      padding: 120px 6vw;
+      text-align: center;
+      position: relative;
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(255, 107, 53, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .final-cta .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      max-width: 680px;
+      margin: 0 auto 16px;
+      line-height: 1.1;
+    }
+
+    .final-cta>p {
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-cta .cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 64px 6vw 32px;
+    }
+
+    .footer-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr repeat(3, 1fr);
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand p {
+      color: var(--text-faint);
+      font-size: 0.85rem;
+      margin-top: 12px;
+      max-width: 240px;
+      line-height: 1.6;
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+      margin-bottom: 18px;
+    }
+
+    .footer-col a {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      transition: color 0.2s ease;
+      width: fit-content;
+    }
+
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: var(--text-faint);
+    }
+
+    @media (max-width: 700px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
   </style>
 </head>
+
 <body>
+
   <nav>
-    <a href="#" class="logo"><img src="logo.png" alt="ShipLab" class="logo-img"></a>
+    <a href="#" class="logo">
+      <img src="logo.png" alt="ShipLab" class="logo-img">
+    </a>
     <ul class="nav-links">
-      <li><a href="#systems">Systems</a></li>
-      <li><a href="#approach">Approach</a></li>
-      <li><a href="#work">Work</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#work">What We Build</a></li>
+      <li><a href="services/clinic-whatsapp.html">Clinic WhatsApp AI Assistant <span style="color: var(--accent); font-size: 0.85rem;">ΓåÉ New</span></a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="btn btn-primary nav-cta-desktop">Discuss a Workflow <span class="arr">&rarr;</span></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+    <a href="#contact" class="btn btn-primary nav-cta-desktop">Book a Discovery Call</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">Γÿ░</button>
   </nav>
 
+  <!-- HERO -->
   <section class="hero" id="home">
     <div>
-      <div class="hero-eyebrow"><span>/</span><span>/</span> AI ENGINEERING &nbsp;/&nbsp; SYSTEMS &nbsp;/&nbsp; 2026</div>
-      <h1>AI Systems Built Around How Your Business Works.</h1>
-      <p>ShipLab designs, builds, and deploys production AI systems around the workflows that matter most to your business.</p>
+      <div class="hero-badge"><span class="badge-dot"></span>Accepting new projects</div>
+      <h1>
+        We build AI products that solve <span class="accent-text">real business problems</span>.
+      </h1>
+      <p>ShipLab is an AI engineering studio that builds AI agents, custom AI software, and SaaS MVPs for ambitious companies.</p>
       <div class="hero-cta-group">
-        <a href="#contact" class="btn btn-primary">Discuss Your Workflow <span class="arr">&rarr;</span></a>
-        <a href="#systems" class="btn btn-ghost">See What We Build</a>
+        <a href="#projects" class="btn btn-primary">View Our Work</a>
+        <a href="#contact" class="btn btn-ghost">Book a Discovery Call</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">2ΓÇô4 <span>weeks</span></div>
+          <div class="hero-stat-label">Average delivery</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">6<span>+</span></div>
+          <div class="hero-stat-label">Years building</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100<span>%</span></div>
+          <div class="hero-stat-label">Code ownership</div>
+        </div>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="system-flow" data-reveal>
-        <div class="flow-label">WORKFLOW</div>
-        <div class="flow-arrow">&#8595;</div>
-        <div class="flow-label">DATA</div>
-        <div class="flow-arrow">&#8595;</div>
-        <div class="flow-label active">INTELLIGENCE</div>
-        <div class="flow-arrow">&#8595;</div>
-        <div class="flow-label active">SYSTEM</div>
-        <div class="flow-arrow">&#8595;</div>
-        <div class="flow-label">OUTCOME</div>
-      </div>
+    <div class="hero-graph">
+      <svg viewBox="0 0 640 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="320" cy="240" rx="200" ry="160" fill="rgba(255,107,53,0.03)" />
+        <g stroke="#161C28" stroke-width="1.5">
+          <path id="e1" d="M90,140 L290,70" />
+          <path id="e2" d="M290,70 L500,150" />
+          <path id="e3" d="M90,140 L170,320" />
+          <path id="e4" d="M170,320 L410,360" />
+          <path id="e5" d="M410,360 L560,270" />
+          <path id="e6" d="M500,150 L560,270" />
+          <path id="e7" d="M290,70 L410,360" />
+        </g>
+        <g>
+          <circle cx="90" cy="140" r="10" fill="#0D0D0D" stroke="#FF6B35" stroke-width="1.5" />
+          <circle cx="90" cy="140" r="4" fill="#FF6B35" opacity="0.8" />
+          <circle cx="290" cy="70" r="14" fill="#0D0D0D" stroke="#FF6B35" stroke-width="1.5" />
+          <circle cx="290" cy="70" r="5" fill="#FF6B35" />
+          <circle cx="500" cy="150" r="10" fill="#0D0D0D" stroke="#FF6B35" stroke-width="1.5" />
+          <circle cx="500" cy="150" r="4" fill="#FF6B35" opacity="0.8" />
+          <circle cx="170" cy="320" r="10" fill="#0D0D0D" stroke="#FF6B35" stroke-width="1.5" />
+          <circle cx="170" cy="320" r="4" fill="#FF6B35" opacity="0.6" />
+          <circle cx="410" cy="360" r="12" fill="#0D0D0D" stroke="#FF6B35" stroke-width="1.5" />
+          <circle cx="410" cy="360" r="5" fill="#FF6B35" opacity="0.8" />
+          <circle cx="560" cy="270" r="10" fill="#0D0D0D" stroke="#FF6B35" stroke-width="1.5" />
+          <circle cx="560" cy="270" r="4" fill="#FF6B35" opacity="0.6" />
+        </g>
+        <text x="66" y="120" font-family="JetBrains Mono" font-size="10" fill="#434D62">agent</text>
+        <text x="268" y="50" font-family="JetBrains Mono" font-size="10" fill="#434D62">trigger</text>
+        <text x="482" y="130" font-family="JetBrains Mono" font-size="10" fill="#434D62">API</text>
+        <text x="148" y="348" font-family="JetBrains Mono" font-size="10" fill="#434D62">workflow</text>
+        <text x="392" y="388" font-family="JetBrains Mono" font-size="10" fill="#434D62">model</text>
+        <text x="542" y="296" font-family="JetBrains Mono" font-size="10" fill="#434D62">output</text>
+        <circle r="3.5" fill="#FF6B35" opacity="0.9">
+          <animateMotion dur="3.4s" repeatCount="indefinite" begin="0s"><mpath href="#e1" /></animateMotion>
+        </circle>
+        <circle r="3.5" fill="#FF6B35" opacity="0.9">
+          <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.6s"><mpath href="#e3" /></animateMotion>
+        </circle>
+        <circle r="3.5" fill="#FF6B35" opacity="0.9">
+          <animateMotion dur="3.1s" repeatCount="indefinite" begin="1.1s"><mpath href="#e4" /></animateMotion>
+        </circle>
+        <circle r="3.5" fill="#FF6B35" opacity="0.9">
+          <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.3s"><mpath href="#e6" /></animateMotion>
+        </circle>
+        <circle r="3.5" fill="#FF6B35" opacity="0.9">
+          <animateMotion dur="3.6s" repeatCount="indefinite" begin="1.6s"><mpath href="#e7" /></animateMotion>
+        </circle>
+      </svg>
     </div>
   </section>
 
-  <section class="positioning-section" data-reveal>
-    <h2>Your business doesn't need another AI tool.</h2>
-    <p class="pos-copy">Most companies already have models, SaaS products, APIs, and automation tools. The difficult part is turning them into a system that actually works inside the business. ShipLab starts with the workflow &mdash; not the technology.</p>
-    <div class="positioning-flow">
-      <span class="pf-item">Workflow</span><span class="pf-arrow">&rarr;</span>
-      <span class="pf-item">Architecture</span><span class="pf-arrow">&rarr;</span>
-      <span class="pf-item">AI</span><span class="pf-arrow">&rarr;</span>
-      <span class="pf-item">Integrations</span><span class="pf-arrow">&rarr;</span>
-      <span class="pf-item">Production</span><span class="pf-arrow">&rarr;</span>
-      <span class="pf-item">Outcome</span>
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span>AI Agents</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Custom AI Software</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>SaaS MVPs</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>AI Integrations</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Voice AI</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>AI Product Development</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>API Development</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Full-Stack Engineering</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>AI Agents</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Custom AI Software</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>SaaS MVPs</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>AI Integrations</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Voice AI</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>AI Product Development</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>API Development</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Full-Stack Engineering</span>
     </div>
-    <p class="pos-statement">We don't sell AI experiments. We build systems that become part of the business.</p>
-  </section>
+  </div>
 
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
-
-  <section class="section-frame" id="systems">
-    <div class="frame-side" data-reveal>
-      <div class="eyebrow"><span class="idx">01</span> What We Build</div>
-      <h2>Systems, not isolated automations.</h2>
-      <p class="frame-lede">Every system is engineered around the workflow it serves &mdash; from first conversation to production deployment.</p>
-    </div>
-    <div>
-      <div class="systems-grid">
-        <div class="card" data-reveal>
-          <div class="card-num">01 / Revenue Systems</div>
-          <h3>Revenue Systems</h3>
-          <p class="card-desc">AI systems for lead qualification, follow-up, reactivation, booking, and revenue workflows.</p>
-          <ul class="card-list"><li>Lead Qualification</li><li>Follow-up Automation</li><li>Patient Reactivation</li><li>Booking Workflows</li><li>Revenue Pipelines</li></ul>
-        </div>
-        <div class="card" data-reveal>
-          <div class="card-num">02 / Customer Systems</div>
-          <h3>Customer Systems</h3>
-          <p class="card-desc">AI reception, support, intake, routing, and customer communication systems.</p>
-          <ul class="card-list"><li>AI Reception</li><li>Support Systems</li><li>Intake &amp; Routing</li><li>Communication AI</li><li>Customer Portals</li></ul>
-        </div>
-        <div class="card" data-reveal>
-          <div class="card-num">03 / Operations Systems</div>
-          <h3>Operations Systems</h3>
-          <p class="card-desc">Workflow orchestration, document processing, internal operations, approvals, and repetitive business processes.</p>
-          <ul class="card-list"><li>Workflow Orchestration</li><li>Document Processing</li><li>Internal Operations</li><li>Approval Systems</li><li>Process Automation</li></ul>
-        </div>
-        <div class="card" data-reveal>
-          <div class="card-num">04 / Knowledge Systems</div>
-          <h3>Knowledge Systems</h3>
-          <p class="card-desc">AI systems connected to internal documents, knowledge, data, and operational context.</p>
-          <ul class="card-list"><li>Internal Knowledge Bases</li><li>Document Intelligence</li><li>Data Context Systems</li><li>Search &amp; Retrieval</li></ul>
-        </div>
-        <div class="card" data-reveal>
-          <div class="card-num">05 / Custom AI Applications</div>
-          <h3>Custom AI Applications</h3>
-          <p class="card-desc">Purpose-built AI applications, agents, internal tools, APIs, and software.</p>
-          <ul class="card-list"><li>AI Applications</li><li>Internal Tools</li><li>APIs &amp; Backends</li><li>Dashboards</li><li>Custom Agents</li></ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
-
-  <section class="featured-system" id="featured">
-    <div class="featured-header" data-reveal>
-      <div class="eyebrow"><span class="idx">02</span> Featured System</div>
-      <h2>AI Patient Revenue System</h2>
-      <p>Dental clinics lose potential patients through missed calls, slow follow-up, and fragmented booking workflows. This system turns those missed opportunities into booked appointments.</p>
-    </div>
-    <div class="featured-layout">
-      <div class="featured-flow" data-reveal>
-        <div class="featured-flow-title">System Architecture</div>
-        <div class="featured-flow-steps">
-          <div class="featured-flow-step"><div class="ff-dot"><div class="ff-dot-inner"></div></div><span class="ff-label">MISSED CALL</span></div>
-          <div class="featured-flow-step"><div class="ff-dot"><div class="ff-dot-inner"></div></div><span class="ff-label">VOICE AI</span></div>
-          <div class="featured-flow-step"><div class="ff-dot"><div class="ff-dot-inner"></div></div><span class="ff-label">QUALIFICATION</span></div>
-          <div class="featured-flow-step"><div class="ff-dot"><div class="ff-dot-inner"></div></div><span class="ff-label">FOLLOW-UP</span></div>
-          <div class="featured-flow-step"><div class="ff-dot"><div class="ff-dot-inner"></div></div><span class="ff-label">BOOKING</span></div>
-          <div class="featured-flow-step"><div class="ff-dot"><div class="ff-dot-inner"></div></div><span class="ff-label">CRM / CALENDAR</span></div>
-        </div>
-      </div>
-      <div class="featured-capabilities" data-reveal>
-        <div class="featured-cap"><h4>Voice AI</h4><p>Natural voice conversations that answer calls and engage patients in real time.</p></div>
-        <div class="featured-cap"><h4>Conversation Handling</h4><p>Context-aware dialogue that understands patient needs and responds appropriately.</p></div>
-        <div class="featured-cap"><h4>Lead Qualification</h4><p>Identifies high-value opportunities and prioritizes follow-up accordingly.</p></div>
-        <div class="featured-cap"><h4>Calendar &amp; CRM Integration</h4><p>Books appointments directly and syncs with existing practice management systems.</p></div>
-        <div class="featured-cap"><h4>Human Handoff</h4><p>Seamless escalation to staff when conversations require human judgment.</p></div>
-        <div class="featured-label">Built by ShipLab &mdash; Demonstration System</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
-
+  <!-- WHAT WE BUILD -->
   <section class="section-frame" id="work">
     <div class="frame-side" data-reveal>
-      <div class="eyebrow"><span class="idx">03</span> Work</div>
-      <h2>Selected Systems</h2>
-      <p class="frame-lede">Production systems built for real businesses &mdash; engineered around specific workflows.</p>
+      <div class="eyebrow"><span class="idx">01</span> What We Build</div>
+      <h2>Four ways we ship AI</h2>
+      <p class="frame-lede">Every engagement is a focused build ΓÇö pick one or run them in sequence.</p>
+    </div>
+    <div>
+      <div class="card-grid">
+        <div class="card" data-reveal>
+          <div class="card-num">01 / AI AGENT DEVELOPMENT</div>
+          <h3>Intelligent agents that automate operations</h3>
+          <p class="card-desc">AI agents that handle customer support, sales, research, and internal workflows ΓÇö deployed and working.</p>
+          <ul class="card-list">
+            <li>Customer Support Agents</li>
+            <li>AI Sales Agents</li>
+            <li>Voice Receptionists</li>
+            <li>Internal Assistants</li>
+            <li>Knowledge Base Agents</li>
+          </ul>
+        </div>
+        <div class="card" data-reveal>
+          <div class="card-num">02 / AI PRODUCT DEVELOPMENT</div>
+          <h3>Custom AI software built for your business</h3>
+          <p class="card-desc">Full-stack AI-powered applications, platforms, and tools designed around your specific requirements.</p>
+          <ul class="card-list">
+            <li>AI Web Applications</li>
+            <li>AI Platforms</li>
+            <li>Internal Tools</li>
+            <li>Dashboards</li>
+            <li>Customer Portals</li>
+          </ul>
+        </div>
+        <div class="card" data-reveal>
+          <div class="card-num">03 / AI MVP DEVELOPMENT</div>
+          <h3>Launch faster with production-ready MVPs</h3>
+          <p class="card-desc">From concept to working product ΓÇö AI SaaS MVPs built for fundraising, validation, and early traction.</p>
+          <ul class="card-list">
+            <li>AI SaaS MVPs</li>
+            <li>Startup Prototypes</li>
+            <li>Product Validation</li>
+            <li>Rapid Builds</li>
+          </ul>
+        </div>
+        <div class="card" data-reveal>
+          <div class="card-num">04 / AI INTEGRATIONS</div>
+          <h3>Connect AI to your existing systems</h3>
+          <p class="card-desc">Integrate AI into your current workflows, CRMs, and APIs without rebuilding your stack.</p>
+          <ul class="card-list">
+            <li>CRM Integrations</li>
+            <li>Workflow Automation</li>
+            <li>API Integrations</li>
+            <li>Email Automation</li>
+            <li>Document Processing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#161C28" stroke-width="1" /></svg></div>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="section-frame" id="projects">
+    <div class="frame-side" data-reveal>
+      <div class="eyebrow"><span class="idx">02</span> Featured Projects</div>
+      <h2>Recent work we're proud of</h2>
+      <p class="frame-lede">Production systems built for real businesses ΓÇö from AI agents to full-stack platforms.</p>
     </div>
     <div>
       <div class="project-grid">
         <div class="project-card" data-reveal>
-          <div class="project-thumb"><div class="project-thumb-inner"><span class="project-thumb-icon">&#128424;</span><span>AI Support Agent</span></div></div>
+          <div class="project-thumb">
+            <div class="project-thumb-inner">
+              <span class="project-thumb-icon">Γî¿</span>
+              <span>AI Support Agent</span>
+            </div>
+          </div>
           <div class="project-body">
             <h3>AI Customer Support Agent</h3>
-            <div class="project-meta">
-              <div class="project-meta-item"><span class="project-meta-label">Problem</span><span class="project-meta-value">Customer inquiries overwhelming support team</span></div>
-              <div class="project-meta-item"><span class="project-meta-label">System</span><span class="project-meta-value">Intelligent support agent across channels</span></div>
+            <p>An intelligent support agent that handles customer inquiries across email, chat, and tickets with human-level understanding.</p>
+            <div class="project-tech">
+              <span>GPT-4</span>
+              <span>LangChain</span>
+              <span>Next.js</span>
+              <span>Supabase</span>
             </div>
-            <div class="project-tech"><span>GPT-4</span><span>LangChain</span><span>Next.js</span><span>Supabase</span></div>
-            <div class="project-links"><a href="#" class="btn btn-outline">Live Demo</a></div>
+            <div class="project-links">
+              <a href="#" class="btn btn-outline">Live Demo</a>
+            </div>
           </div>
         </div>
         <div class="project-card" data-reveal>
-          <div class="project-thumb"><div class="project-thumb-inner"><span class="project-thumb-icon">&#127908;</span><span>Voice Receptionist</span></div></div>
+          <div class="project-thumb">
+            <div class="project-thumb-inner">
+              <span class="project-thumb-icon">≡ƒÄÖ</span>
+              <span>Voice Receptionist</span>
+            </div>
+          </div>
           <div class="project-body">
             <h3>AI Voice Receptionist</h3>
-            <div class="project-meta">
-              <div class="project-meta-item"><span class="project-meta-label">Problem</span><span class="project-meta-value">Missed calls and after-hours inquiries</span></div>
-              <div class="project-meta-item"><span class="project-meta-label">System</span><span class="project-meta-value">Voice AI for call handling and booking</span></div>
+            <p>A voice AI that answers calls, books appointments, handles FAQs, and routes complex inquiries ΓÇö all in natural speech.</p>
+            <div class="project-tech">
+              <span>ElevenLabs</span>
+              <span>Twilio</span>
+              <span>Node.js</span>
+              <span>Pinecone</span>
             </div>
-            <div class="project-tech"><span>ElevenLabs</span><span>Twilio</span><span>Node.js</span><span>Pinecone</span></div>
-            <div class="project-links"><a href="#" class="btn btn-outline">Live Demo</a></div>
+            <div class="project-links">
+              <a href="#" class="btn btn-outline">Live Demo</a>
+            </div>
           </div>
         </div>
         <div class="project-card" data-reveal>
-          <div class="project-thumb"><div class="project-thumb-inner"><span class="project-thumb-icon">&#128300;</span><span>Research Assistant</span></div></div>
+          <div class="project-thumb">
+            <div class="project-thumb-inner">
+              <span class="project-thumb-icon">≡ƒö¼</span>
+              <span>Research Assistant</span>
+            </div>
+          </div>
           <div class="project-body">
             <h3>AI Research Assistant</h3>
-            <div class="project-meta">
-              <div class="project-meta-item"><span class="project-meta-label">Problem</span><span class="project-meta-value">Manual research consuming analyst time</span></div>
-              <div class="project-meta-item"><span class="project-meta-label">System</span><span class="project-meta-value">Multi-source research and synthesis</span></div>
+            <p>An AI that researches topics, synthesizes findings from multiple sources, and delivers structured reports on demand.</p>
+            <div class="project-tech">
+              <span>Claude</span>
+              <span>RAG</span>
+              <span>Python</span>
+              <span>FastAPI</span>
             </div>
-            <div class="project-tech"><span>Claude</span><span>RAG</span><span>Python</span><span>FastAPI</span></div>
-            <div class="project-links"><a href="#" class="btn btn-outline">Live Demo</a></div>
+            <div class="project-links">
+              <a href="#" class="btn btn-outline">Live Demo</a>
+            </div>
           </div>
         </div>
         <div class="project-card" data-reveal>
-          <div class="project-thumb"><div class="project-thumb-inner"><span class="project-thumb-icon">&#128202;</span><span>CRM Integration</span></div></div>
+          <div class="project-thumb">
+            <div class="project-thumb-inner">
+              <span class="project-thumb-icon">≡ƒôè</span>
+              <span>CRM Integration</span>
+            </div>
+          </div>
           <div class="project-body">
             <h3>AI CRM Integration</h3>
-            <div class="project-meta">
-              <div class="project-meta-item"><span class="project-meta-label">Problem</span><span class="project-meta-value">Manual lead management slowing pipeline</span></div>
-              <div class="project-meta-item"><span class="project-meta-label">System</span><span class="project-meta-value">Automated qualification and follow-up</span></div>
+            <p>Seamless AI integration that automates lead qualification, enrichment, follow-ups, and pipeline management.</p>
+            <div class="project-tech">
+              <span>Salesforce API</span>
+              <span>GPT-4</span>
+              <span>React</span>
+              <span>Node.js</span>
             </div>
-            <div class="project-tech"><span>Salesforce API</span><span>GPT-4</span><span>React</span><span>Node.js</span></div>
-            <div class="project-links"><a href="#" class="btn btn-outline">Live Demo</a></div>
+            <div class="project-links">
+              <a href="#" class="btn btn-outline">Live Demo</a>
+            </div>
           </div>
         </div>
         <div class="project-card" data-reveal>
-          <div class="project-thumb"><div class="project-thumb-inner"><span class="project-thumb-icon">&#128200;</span><span>AI Dashboard</span></div></div>
+          <div class="project-thumb">
+            <div class="project-thumb-inner">
+              <span class="project-thumb-icon">≡ƒôê</span>
+              <span>AI Dashboard</span>
+            </div>
+          </div>
           <div class="project-body">
             <h3>AI Analytics Dashboard</h3>
-            <div class="project-meta">
-              <div class="project-meta-item"><span class="project-meta-label">Problem</span><span class="project-meta-value">No visibility into AI system performance</span></div>
-              <div class="project-meta-item"><span class="project-meta-label">System</span><span class="project-meta-value">Real-time monitoring and insights</span></div>
+            <p>A real-time dashboard tracking AI agent performance, business metrics, and operational insights across your systems.</p>
+            <div class="project-tech">
+              <span>React</span>
+              <span>D3.js</span>
+              <span>FastAPI</span>
+              <span>PostgreSQL</span>
             </div>
-            <div class="project-tech"><span>React</span><span>D3.js</span><span>FastAPI</span><span>PostgreSQL</span></div>
-            <div class="project-links"><a href="#" class="btn btn-outline">Live Demo</a></div>
+            <div class="project-links">
+              <a href="#" class="btn btn-outline">Live Demo</a>
+            </div>
           </div>
         </div>
         <div class="project-card" data-reveal>
-          <div class="project-thumb"><div class="project-thumb-inner"><span class="project-thumb-icon">&#128640;</span><span>SaaS MVP</span></div></div>
+          <div class="project-thumb">
+            <div class="project-thumb-inner">
+              <span class="project-thumb-icon">≡ƒÜÇ</span>
+              <span>SaaS MVP</span>
+            </div>
+          </div>
           <div class="project-body">
             <h3>AI SaaS MVP</h3>
-            <div class="project-meta">
-              <div class="project-meta-item"><span class="project-meta-label">Problem</span><span class="project-meta-value">Startup needed production-ready MVP</span></div>
-              <div class="project-meta-item"><span class="project-meta-label">System</span><span class="project-meta-value">Full-stack AI SaaS with billing</span></div>
+            <p>A full-stack AI SaaS MVP with authentication, billing, and core AI features ΓÇö built to raise and demo in weeks.</p>
+            <div class="project-tech">
+              <span>Next.js</span>
+              <span>Stripe</span>
+              <span>OpenAI</span>
+              <span>Supabase</span>
             </div>
-            <div class="project-tech"><span>Next.js</span><span>Stripe</span><span>OpenAI</span><span>Supabase</span></div>
-            <div class="project-links"><a href="#" class="btn btn-outline">Live Demo</a></div>
+            <div class="project-links">
+              <a href="#" class="btn btn-outline">Live Demo</a>
+              <a href="#" class="btn btn-outline">GitHub</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
+  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#161C28" stroke-width="1" /></svg></div>
 
-  <section class="section-frame" id="approach">
+  <!-- HOW WE WORK -->
+  <section class="section-frame" id="process">
     <div class="frame-side" data-reveal>
-      <div class="eyebrow"><span class="idx">04</span> Approach</div>
-      <h2>From workflow to production.</h2>
-      <p class="frame-lede">A focused process designed for speed, quality, and systems that compound.</p>
+      <div class="eyebrow"><span class="idx">03</span> How We Work</div>
+      <h2>From idea to production</h2>
+      <p class="frame-lede">A focused process designed for speed and quality ΓÇö no wasted cycles.</p>
     </div>
     <div class="process-timeline">
-      <div class="process-step" data-reveal><div class="process-num">01</div><div class="process-content"><h4>Discover</h4><p>Map the workflow, bottlenecks, systems, data, constraints, and economics.</p></div></div>
-      <div class="process-step" data-reveal><div class="process-num">02</div><div class="process-content"><h4>Design</h4><p>Identify the highest-leverage opportunity and architect the complete solution.</p></div></div>
-      <div class="process-step" data-reveal><div class="process-num">03</div><div class="process-content"><h4>Prototype</h4><p>Build against realistic workflows and expose edge cases before overbuilding.</p></div></div>
-      <div class="process-step" data-reveal><div class="process-num">04</div><div class="process-content"><h4>Ship</h4><p>Engineer and deploy the production system into the real environment.</p></div></div>
-      <div class="process-step compound-step" data-reveal><div class="process-num">05</div><div class="process-content"><h4>Compound</h4><p>Measure performance, improve reliability, expand the system, and turn repeated solutions into reusable capabilities.</p></div></div>
+      <div class="process-step" data-reveal>
+        <div class="process-num">01</div>
+        <div class="process-content">
+          <h4>Discover</h4>
+          <p>We map your requirements, identify the right AI approach, and define clear success criteria before anything is built.</p>
+        </div>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="process-num">02</div>
+        <div class="process-content">
+          <h4>Design</h4>
+          <p>Architecture, data models, and system flows are planned so the build phase runs without surprises.</p>
+        </div>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="process-num">03</div>
+        <div class="process-content">
+          <h4>Build</h4>
+          <p>Focused development with regular check-ins ΓÇö you always know exactly where things stand.</p>
+        </div>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="process-num">04</div>
+        <div class="process-content">
+          <h4>Launch</h4>
+          <p>Deployed, documented, and handed off with everything you need to run and maintain the system.</p>
+        </div>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="process-num">05</div>
+        <div class="process-content">
+          <h4>Improve</h4>
+          <p>Systems are monitored and refined post-launch ΓÇö we stay with you after the build is live.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
+  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#161C28" stroke-width="1" /></svg></div>
 
+  <!-- WHY SHIPLAB -->
   <section class="section-frame" id="why">
     <div class="frame-side" data-reveal>
-      <div class="eyebrow"><span class="idx">05</span> Why ShipLab</div>
-      <h2>How we're different.</h2>
-      <p class="frame-lede">Our advantage is how we engineer the system &mdash; not which tools we use.</p>
+      <div class="eyebrow"><span class="idx">04</span> Why ShipLab</div>
+      <h2>Built for serious AI engineering</h2>
+      <p class="frame-lede">We don't do marketing automation. We build production AI software.</p>
     </div>
     <div>
       <div class="why-grid">
-        <div class="card" data-reveal><div class="eyebrow">Workflow First</div><p class="card-desc">We start with how the business actually operates &mdash; not which AI model to use.</p></div>
-        <div class="card" data-reveal><div class="eyebrow">End-to-End Ownership</div><p class="card-desc">Strategy, architecture, engineering, deployment, and iteration under one roof.</p></div>
-        <div class="card" data-reveal><div class="eyebrow">Production Thinking</div><p class="card-desc">Reliability, error handling, monitoring, fallbacks, integrations, and maintainability matter from the beginning.</p></div>
-        <div class="card" data-reveal><div class="eyebrow">Fast Feedback</div><p class="card-desc">Prototype early, expose problems early, and move quickly without sacrificing engineering quality.</p></div>
-        <div class="card" data-reveal><div class="eyebrow">Built to Compound</div><p class="card-desc">Every project should make the next system faster, smarter, and more reusable.</p></div>
+        <div class="card" data-reveal>
+          <div class="eyebrow">Engineering First</div>
+          <p class="card-desc">Every system is architected for scale, maintainability, and performance ΓÇö no no-code shortcuts, no vendor lock-in.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="eyebrow">Production Ready</div>
+          <p class="card-desc">What ships powers your business from day one. Monitoring, error handling, and documentation are part of every build.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="eyebrow">Fast Iteration</div>
+          <p class="card-desc">Direct communication, no account managers, no handoffs. Decisions happen fast because the builder is the point of contact.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="eyebrow">Modern AI Stack</div>
+          <p class="card-desc">We use the latest models, frameworks, and infrastructure ΓÇö GPT-4, Claude, LangChain, RAG, and beyond.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="eyebrow">Long-term Partner</div>
+          <p class="card-desc">We don't disappear after launch. Monitoring, support, and ongoing improvements keep your system running reliably.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
+  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#161C28" stroke-width="1" /></svg></div>
 
-  <section class="tech-section" id="tech">
-    <div class="tech-header" data-reveal>
-      <div class="eyebrow"><span class="idx">06</span> Technology</div>
-      <h2>Built across the stack.</h2>
-      <p class="tech-note">Technology is selected around the workflow &mdash; not the other way around.</p>
-    </div>
-    <div class="tech-categories">
-      <div class="tech-cat" data-reveal><div class="tech-cat-label">AI</div><div class="tech-cat-items">Claude<br>OpenAI<br>Gemini</div></div>
-      <div class="tech-cat" data-reveal><div class="tech-cat-label">Applications</div><div class="tech-cat-items">Next.js<br>React<br>Node.js</div></div>
-      <div class="tech-cat" data-reveal><div class="tech-cat-label">Automation</div><div class="tech-cat-items">n8n<br>Make</div></div>
-      <div class="tech-cat" data-reveal><div class="tech-cat-label">Data</div><div class="tech-cat-items">Supabase<br>MongoDB<br>APIs</div></div>
-      <div class="tech-cat" data-reveal><div class="tech-cat-label">Voice &amp; Agents</div><div class="tech-cat-items">Vapi<br>Retell</div></div>
-    </div>
-  </section>
-
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
-
-  <section class="industry-section" id="industry">
-    <div class="industry-header" data-reveal>
-      <div class="eyebrow"><span class="idx">07</span> Focus</div>
-      <h2>Where we're starting.</h2>
-    </div>
-    <div class="industry-focus">
-      <div class="industry-main" data-reveal>
-        <h3>Dental &amp; Healthcare</h3>
-        <p>We are initially focused on high-value workflows in dental and healthcare where missed opportunities, manual operations, and fragmented communication create measurable business impact.</p>
-      </div>
-      <div class="industry-capabilities" data-reveal>
-        <div class="industry-cap"><div class="industry-cap-dot"></div><span>Revenue</span></div>
-        <div class="industry-cap"><div class="industry-cap-dot"></div><span>Customer</span></div>
-        <div class="industry-cap"><div class="industry-cap-dot"></div><span>Operations</span></div>
-        <div class="industry-cap"><div class="industry-cap-dot"></div><span>Knowledge</span></div>
-      </div>
-    </div>
-    <p class="industry-note" data-reveal>We start narrow enough to develop deep expertise, then expand where the same problems repeat.</p>
-  </section>
-
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
-
+  <!-- ABOUT -->
   <section class="section-frame" id="about">
     <div class="frame-side" data-reveal>
-      <div class="eyebrow"><span class="idx">08</span> About</div>
-      <h2>Built by an engineer who wants to build systems &mdash; and eventually products.</h2>
+      <div class="eyebrow"><span class="idx">05</span> About</div>
+      <h2>Who's building your software</h2>
     </div>
     <div class="about-inner" data-reveal>
       <div class="about-avatar"><img src="mypicture.png" alt="Awais, founder of ShipLab"></div>
       <div class="about-content">
-        <h3>I'm Awais, founder of ShipLab.</h3>
-        <p>I build AI systems that solve real operational problems &mdash; from intelligent customer interactions to workflow automation and custom AI software.</p>
-        <p>ShipLab exists around a simple idea: understand the problem deeply, engineer the right system, deploy it into reality, and keep improving it.</p>
-        <p>Over time, repeated problems become reusable systems. Reusable systems can become products.</p>
+        <h3>ShipLab is an AI engineering studio focused on building intelligent software for modern businesses.</h3>
+        <p>From AI agents to production-ready AI products, we help companies transform ideas into real software.</p>
+        <p>I'm Awais ΓÇö a full-stack developer and engineer with 6+ years building production systems. ShipLab exists because founders kept getting quoted enterprise prices for what should be a focused, fast build. We built the studio we wished existed: one builder, direct communication, production-ready systems.</p>
+        <div class="about-tags">
+          <span class="about-tag">MERN Stack</span>
+          <span class="about-tag">AI Engineering</span>
+          <span class="about-tag">6+ Years</span>
+          <span class="about-tag">Remote First</span>
+          <span class="about-tag">Production Focus</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
+  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#161C28" stroke-width="1" /></svg></div>
 
-  <section class="vision-section" data-reveal>
-    <h2>Built to compound.</h2>
-    <div class="vision-flow">
-      <div class="vf-node">REAL PROBLEM</div><div class="vf-arrow">&#8595;</div>
-      <div class="vf-node">AI SYSTEM</div><div class="vf-arrow">&#8595;</div>
-      <div class="vf-node">REAL CUSTOMER</div><div class="vf-arrow">&#8595;</div>
-      <div class="vf-node">LEARNING</div><div class="vf-arrow">&#8595;</div>
-      <div class="vf-node">REPEATED PROBLEM</div><div class="vf-arrow">&#8595;</div>
-      <div class="vf-node">REUSABLE SYSTEM</div><div class="vf-arrow">&#8595;</div>
-      <div class="vf-node hl">PRODUCT / IP</div>
-    </div>
-    <div class="vision-copy">
-      <span>Services are where we learn.</span>
-      <span>Systems are what we build.</span>
-      <span>Repeated problems are where products come from.</span>
-    </div>
-  </section>
-
-  <div class="section-divider"><svg viewBox="0 0 1200 1"><line x1="0" y1="0" x2="1200" y2="0" stroke="#252A34" stroke-width="1" /></svg></div>
-
-  <section class="faq-section" id="faq">
-    <div class="faq-header" data-reveal>
-      <div class="eyebrow"><span class="idx">09</span> FAQ</div>
-      <h2>Questions &amp; Answers</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item" data-reveal><div class="faq-q">What does ShipLab build?</div><div class="faq-a">Production AI systems, applications, agents, workflow infrastructure, and integrations.</div></div>
-      <div class="faq-item" data-reveal><div class="faq-q">Do you only build AI agents?</div><div class="faq-a">No. Agents are one component of a larger system.</div></div>
-      <div class="faq-item" data-reveal><div class="faq-q">Can you work with our existing software?</div><div class="faq-a">Yes. We integrate with existing systems wherever appropriate.</div></div>
-      <div class="faq-item" data-reveal><div class="faq-q">How does an engagement start?</div><div class="faq-a">Workflow discovery &rarr; architecture &rarr; prototype &rarr; production.</div></div>
-      <div class="faq-item" data-reveal><div class="faq-q">Do you stay after launch?</div><div class="faq-a">Yes. Systems can be continuously improved and expanded.</div></div>
-      <div class="faq-item" data-reveal><div class="faq-q">Do you build custom software?</div><div class="faq-a">Yes. AI systems often require custom applications, APIs, databases, interfaces, and integrations.</div></div>
-    </div>
-  </section>
-
+  <!-- FINAL CTA -->
   <section class="final-cta" id="contact">
     <div class="eyebrow">Get Started</div>
-    <h2>Have a workflow worth rebuilding?</h2>
-    <p>Tell us what's slowing your team down. We'll identify where AI can create the most leverage.</p>
+    <h2>Ready to build your AI product?</h2>
+    <p>Let's turn your idea into production-ready software.</p>
     <div class="cta-group">
-      <a href="https://calendly.com/mrawaissultan2002/new-meeting-1?hide_gdpr_banner=1" class="btn btn-primary" target="_blank" rel="noopener">Discuss Your Workflow <span class="arr">&rarr;</span></a>
-      <a href="#systems" class="btn btn-ghost">View Our Systems</a>
+      <a href="https://calendly.com/mrawaissultan2002/new-meeting-1?hide_gdpr_banner=1" class="btn btn-primary" target="_blank" rel="noopener">Book a Call</a>
+      <a href="mailto:hello@shiplab.dev" class="btn btn-ghost">Start a Project</a>
     </div>
-    <p style="margin-top:32px; font-size:0.78rem; color:var(--text-dim);">Or email us at <a href="mailto:hello@shiplab.dev" style="color:var(--accent);">hello@shiplab.dev</a></p>
+    <p style="margin-top:32px; font-size:0.82rem; color:var(--text-faint);">Or email us at <a href="mailto:hello@shiplab.dev" style="color:var(--accent);">hello@shiplab.dev</a></p>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo"><img src="logo.png" alt="ShipLab" class="logo-img"></a>
-        <p>AI Engineering &amp; Systems Partner</p>
-        <div class="footer-process">Discover &middot; Design &middot; Prototype &middot; Build &middot; Deploy &middot; Compound</div>
+        <a href="#" class="logo">
+          <img src="logo.png" alt="ShipLab" class="logo-img">
+        </a>
+        <p>Building AI Products.<br>Shipping Real Solutions.</p>
       </div>
-      <div class="footer-col"><h5>Navigation</h5><a href="#systems">Systems</a><a href="#approach">Approach</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div>
-      <div class="footer-col"><h5>Systems</h5><a href="#systems">Revenue Systems</a><a href="#systems">Customer Systems</a><a href="#systems">Operations Systems</a><a href="#systems">Knowledge Systems</a><a href="#systems">Custom AI Applications</a></div>
-      <div class="footer-col"><h5>Social</h5><a href="#" target="_blank" rel="noopener">X</a><a href="#" target="_blank" rel="noopener">LinkedIn</a><a href="#" target="_blank" rel="noopener">Instagram</a><a href="#" target="_blank" rel="noopener">YouTube</a></div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>What We Build</h5>
+        <a href="#work">AI Agents</a>
+        <a href="#work">AI Products</a>
+        <a href="#work">AI MVPs</a>
+        <a href="#work">AI Integrations</a>
+        <a href="services/clinic-whatsapp.html">Clinic WhatsApp AI Assistant</a>
+      </div>
+      <div class="footer-col">
+        <h5>Social</h5>
+        <a href="#" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
     </div>
     <div class="footer-bottom">
-      <div>&copy; 2026 ShipLab. All rights reserved.</div>
+      <div>┬⌐ 2026 ShipLab. All rights reserved.</div>
+      <div style="display:flex; gap:20px;">
+        <a href="#" style="color:var(--text-faint);">Privacy</a>
+        <a href="#" style="color:var(--text-faint);">Terms</a>
+      </div>
     </div>
   </footer>
 
@@ -591,21 +1464,27 @@
     const revealEls = document.querySelectorAll('[data-reveal]');
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => io.observe(el));
+
     const navToggle = document.getElementById('navToggle');
     navToggle.addEventListener('click', () => {
       const links = document.querySelector('.nav-links');
       const isShown = links.style.display === 'flex';
       links.style.display = isShown ? 'none' : 'flex';
-      links.style.cssText += isShown ? '' : 'position:fixed; top:64px; left:0; right:0; background:rgba(8,9,11,0.96); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); flex-direction:column; padding:24px 6vw; border-bottom:1px solid #252A34; gap:18px; z-index:199;';
+      links.style.cssText += isShown ? '' : 'position:fixed; top:60px; left:0; right:0; background:#0D0D0D; flex-direction:column; padding:24px 6vw; border-bottom:1px solid #161C28; gap:18px; z-index:199;';
     });
+
     window.addEventListener('scroll', () => {
       const nav = document.querySelector('nav');
-      nav.style.background = window.scrollY > 40 ? 'rgba(8,9,11,0.96)' : 'rgba(8,9,11,0.8)';
+      nav.style.background = window.scrollY > 40 ? 'rgba(13,13,13,0.96)' : 'rgba(13,13,13,0.85)';
     });
   </script>
 </body>
+
 </html>
