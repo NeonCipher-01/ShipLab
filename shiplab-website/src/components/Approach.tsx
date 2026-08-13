@@ -5,19 +5,23 @@ import { motion } from "framer-motion";
 const steps = [
   {
     label: "Business Problem",
-    description: "What's costing you time or money right now?",
+    description: "What's repeatedly costing you time, money, or opportunities?",
   },
   {
-    label: "Custom Solution",
-    description: "Architecture designed around your specific workflow.",
+    label: "Workflow",
+    description: "How does your team actually solve it today?",
+  },
+  {
+    label: "AI System",
+    description: "What should software understand, decide, and execute?",
   },
   {
     label: "Working System",
-    description: "Production-ready software deployed into your operations.",
+    description: "We integrate it into your existing operations.",
   },
   {
-    label: "Ongoing Improvement",
-    description: "Continuous refinement based on real performance data.",
+    label: "Continuous Improvement",
+    description: "We improve it based on real usage and results.",
   },
 ];
 
@@ -39,9 +43,9 @@ export default function Approach() {
               Problem first. Software second.
             </h2>
             <p className="text-muted leading-relaxed mb-8">
-              We don&apos;t start with AI models or trendy frameworks. We start
-              with what&apos;s actually broken in your business — then engineer
-              the right system to fix it.
+              We don&apos;t start with an AI model. We start with what is
+              costing your business time or money — then engineer the right
+              system around it.
             </p>
             <div className="flex items-center gap-4 p-5 border border-border">
               <div className="w-10 h-10 rounded-full bg-dark flex items-center justify-center flex-shrink-0">

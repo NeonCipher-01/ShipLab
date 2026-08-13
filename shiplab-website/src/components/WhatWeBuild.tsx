@@ -6,45 +6,53 @@ const categories = [
   {
     title: "Revenue Systems",
     description:
-      "AI systems that capture leads, qualify prospects, and book appointments automatically.",
+      "Turn more opportunities into customers.",
     examples: [
-      "Lead qualification & scoring",
-      "Automated follow-up sequences",
-      "Patient reactivation campaigns",
-      "Booking & scheduling workflows",
+      "Lead qualification",
+      "Lead follow-up",
+      "Lead recovery",
+      "Customer reactivation",
+      "Appointment booking",
+      "Sales workflow automation",
     ],
   },
   {
     title: "Operations Systems",
     description:
-      "Workflow automation that eliminates manual work and connects your disconnected tools.",
+      "Remove repetitive work from your team.",
     examples: [
-      "Document processing & routing",
-      "Internal approval workflows",
-      "Data entry automation",
+      "Email processing",
+      "Document processing",
+      "Data entry",
+      "Internal approvals",
+      "Workflow automation",
       "Cross-system synchronization",
     ],
   },
   {
-    title: "Customer AI",
+    title: "Customer Systems",
     description:
-      "Intelligent systems that handle customer interactions around the clock.",
+      "Handle customer interactions without adding more people.",
     examples: [
-      "AI receptionists & phone agents",
-      "24/7 support & chat systems",
-      "Intelligent intake forms",
-      "Smart call routing",
+      "AI receptionists",
+      "Voice agents",
+      "Customer support",
+      "Intelligent intake",
+      "Call routing",
+      "Appointment management",
     ],
   },
   {
     title: "Custom AI Software",
     description:
-      "Purpose-built applications designed around your specific business needs.",
+      "When your workflow needs software built specifically for it.",
     examples: [
-      "Internal dashboards & tools",
-      "Custom APIs & backends",
-      "AI-powered analytics",
-      "Industry-specific applications",
+      "Internal applications",
+      "Dashboards",
+      "AI-powered tools",
+      "Custom APIs",
+      "Business intelligence",
+      "Industry-specific software",
     ],
   },
 ];
@@ -64,11 +72,10 @@ export default function WhatWeBuild() {
             What We Build
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-            Systems, not isolated tools.
+            AI systems that do the work — not isolated AI features.
           </h2>
           <p className="text-muted leading-relaxed">
-            Every system is engineered around the workflow it serves — from
-            first conversation to production deployment.
+            Every ShipLab system is built around a real business workflow.
           </p>
         </motion.div>
 

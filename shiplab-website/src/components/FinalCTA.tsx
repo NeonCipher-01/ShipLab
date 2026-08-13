@@ -31,20 +31,19 @@ export default function FinalCTA() {
               Get Started
             </p>
             <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-              Have a problem worth solving?
+              What work is costing your business time or money?
             </h2>
             <p className="text-muted leading-relaxed mb-8">
-              Tell us what&apos;s costing your business time or money. We&apos;ll
-              determine whether custom AI software can actually solve it.
+              Tell us about one repetitive workflow, bottleneck, or lost
+              opportunity. We&apos;ll tell you whether an AI system can actually
+              solve it.
             </p>
             <div className="flex flex-col gap-4">
               <a
-                href="https://calendly.com/mrawaissultan2002/new-meeting-1?hide_gdpr_banner=1"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact-form"
                 className="inline-flex items-center justify-center gap-2 bg-dark text-white px-7 py-3.5 rounded-full text-sm font-medium hover:bg-dark/90 transition-all duration-200 hover:translate-y-[-1px]"
               >
-                Book a Call
+                Tell Us Your Problem
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -58,6 +57,14 @@ export default function FinalCTA() {
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
+              </a>
+              <a
+                href="https://calendly.com/mrawaissultan2002/new-meeting-1?hide_gdpr_banner=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border border-border px-7 py-3.5 rounded-full text-sm font-medium hover:border-dark/30 transition-all duration-200"
+              >
+                Book a Call
               </a>
               <p className="text-sm text-light">
                 Or email us at{" "}
@@ -132,7 +139,7 @@ export default function FinalCTA() {
                   setFormState({ ...formState, business: e.target.value })
                 }
                 className="w-full px-4 py-3 bg-card border border-border text-sm focus:outline-none focus:border-dark/30 transition-colors"
-                placeholder="e.g. Dental clinic, MedSpa, Agency"
+                placeholder="e.g. Dental clinic, MedSpa, Agency, Logistics"
               />
             </div>
             <div>
@@ -150,7 +157,7 @@ export default function FinalCTA() {
                   setFormState({ ...formState, problem: e.target.value })
                 }
                 className="w-full px-4 py-3 bg-card border border-border text-sm focus:outline-none focus:border-dark/30 transition-colors resize-none"
-                placeholder="Tell us what's costing your business time or money..."
+                placeholder="Tell us about the repetitive work, bottleneck, or lost opportunity you're dealing with."
                 required
               />
             </div>
@@ -161,7 +168,7 @@ export default function FinalCTA() {
               Tell Us Your Problem
             </button>
             <p className="text-xs text-light text-center">
-              We&apos;ll review your submission and get back within 24 hours.
+              We&apos;ll review your problem and get back to you within 24 hours.
             </p>
           </motion.form>
         </div>

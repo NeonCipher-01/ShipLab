@@ -4,34 +4,34 @@ import { motion } from "framer-motion";
 
 const problems = [
   {
-    title: "Missed Calls Become Lost Customers",
+    title: "Missed Opportunities",
     description:
-      "Every unanswered call is a potential customer choosing your competitor.",
+      "Calls go unanswered. Leads go cold. Customers move to the competitor.",
   },
   {
-    title: "Slow Lead Follow-Up",
+    title: "Slow Follow-Up",
     description:
-      "Leads go cold within minutes. Hours-long response times kill conversions.",
+      "Your team can't respond to every inquiry instantly. Valuable opportunities disappear.",
   },
   {
-    title: "Old Customers Never Return",
+    title: "Repetitive Work",
     description:
-      "Without re-engagement, your best patients and clients simply forget you exist.",
+      "Employees spend hours reading, copying, updating, checking, and following up.",
   },
   {
-    title: "Repetitive Manual Work",
+    title: "Manual Data Entry",
     description:
-      "Your team spends hours on tasks that should take seconds.",
+      "Information moves from emails and forms into CRMs, calendars, spreadsheets, and other systems by hand.",
   },
   {
-    title: "Disconnected Business Tools",
+    title: "Disconnected Systems",
     description:
-      "Your CRM, calendar, and communication tools don't talk to each other.",
+      "Your CRM, calendar, communication tools, and internal software don't work together.",
   },
   {
-    title: "Poor Customer Experience",
+    title: "Customer Operations",
     description:
-      "Fragmented interactions create friction and erode trust.",
+      "Your team repeatedly answers the same questions, collects the same information, and performs the same processes.",
   },
 ];
 
@@ -50,11 +50,12 @@ export default function Problems() {
             The Problem
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-            These aren&apos;t AI problems. They&apos;re business problems.
+            Your business has work that shouldn&apos;t require a human.
           </h2>
           <p className="text-muted leading-relaxed">
-            Every business loses money to the same preventable issues. The
-            solution isn&apos;t more tools — it&apos;s smarter systems.
+            Most businesses lose time and revenue not because they lack software
+            — but because people still have to manually move work between
+            systems.
           </p>
         </motion.div>
 

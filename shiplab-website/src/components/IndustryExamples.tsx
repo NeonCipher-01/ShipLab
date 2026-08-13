@@ -8,22 +8,24 @@ const industries = [
     pipeline: [
       "Missed Call",
       "AI Receptionist",
-      "Qualified Lead",
-      "Booked Appointment",
+      "Patient Qualification",
+      "Appointment Booking",
+      "CRM Update",
     ],
     description:
-      "Dental clinics lose potential patients through missed calls, slow follow-up, and fragmented booking workflows. An AI receptionist captures every lead and books appointments automatically.",
+      "Missed calls and slow follow-up turn potential patients into lost revenue.",
   },
   {
     name: "MedSpas",
     pipeline: [
       "Inquiry",
-      "AI Consultation",
-      "Treatment Match",
-      "Scheduled Session",
+      "AI Conversation",
+      "Intent & Treatment Qualification",
+      "Follow-Up",
+      "Consultation Booking",
     ],
     description:
-      "MedSpas struggle with high-value consult no-shows and slow response to treatment inquiries. AI systems qualify intent, match treatments, and fill calendars.",
+      "Treatment inquiries and old customers require constant follow-up.",
   },
 ];
 
@@ -39,14 +41,14 @@ export default function IndustryExamples() {
           className="max-w-[600px] mb-16"
         >
           <p className="text-xs font-medium tracking-[0.15em] uppercase text-muted mb-4">
-            Industry Examples
+            Industries
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-            Real problems. Real solutions.
+            The problems repeat. The workflows don&apos;t have to.
           </h2>
           <p className="text-muted leading-relaxed">
-            These are example industries, not limitations. The same problems
-            repeat across businesses.
+            These are examples of where we can apply AI systems — not
+            limitations.
           </p>
         </motion.div>
 
@@ -93,6 +95,39 @@ export default function IndustryExamples() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12 border border-border p-8 md:p-10"
+        >
+          <h3 className="text-lg font-semibold tracking-[-0.01em] mb-4">
+            Other Businesses
+          </h3>
+          <p className="text-sm text-muted leading-relaxed mb-6">
+            The same principle applies anywhere people repeatedly perform the
+            same workflow.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              "Agencies",
+              "Logistics",
+              "Professional Services",
+              "E-commerce",
+              "Healthcare",
+              "Local Businesses",
+            ].map((item) => (
+              <span
+                key={item}
+                className="text-xs font-medium px-3 py-1.5 bg-background border border-border"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

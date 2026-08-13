@@ -4,24 +4,24 @@ import { motion } from "framer-motion";
 
 const outcomes = [
   {
-    title: "More Captured Leads",
-    description: "Every inquiry is caught, qualified, and routed — none slip through.",
-  },
-  {
-    title: "More Appointments",
-    description: "AI books directly into your calendar, filling gaps automatically.",
-  },
-  {
-    title: "Less Manual Work",
-    description: "Repetitive tasks handled by systems, freeing your team for higher-value work.",
+    title: "More Captured Opportunities",
+    description: "Every appropriate inquiry gets handled instead of waiting for a human.",
   },
   {
     title: "Faster Response",
-    description: "Instant engagement means leads stay warm and competitors lose their edge.",
+    description: "Customers and leads get the right response when it matters.",
+  },
+  {
+    title: "Less Manual Work",
+    description: "Your team spends less time performing repetitive operational tasks.",
+  },
+  {
+    title: "Better Connected Systems",
+    description: "Information moves between your existing tools without constant human intervention.",
   },
   {
     title: "Better Customer Experience",
-    description: "Consistent, intelligent interactions at every touchpoint.",
+    description: "Customers receive faster, more consistent interactions.",
   },
 ];
 
@@ -40,7 +40,7 @@ export default function Outcomes() {
             Business Outcomes
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-            What changes when systems work.
+            What changes when the work starts running itself.
           </h2>
           <p className="text-muted leading-relaxed">
             Measurable improvements to how your business runs and grows.

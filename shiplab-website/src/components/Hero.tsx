@@ -13,14 +13,14 @@ export default function Hero() {
           className="max-w-[800px]"
         >
           <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-balance mb-8">
-            We Solve Business Problems With Custom AI Software.
+            We Turn Repetitive Business Work Into AI Systems.
           </h1>
           <p className="text-lg md:text-xl text-muted max-w-[560px] leading-relaxed mb-12">
-            ShipLab finds costly gaps in your business and builds AI-powered
-            systems to solve them — from lead recovery and AI receptionists to
-            custom internal software.
+            ShipLab finds costly, repetitive workflows in your business and
+            builds AI-powered systems that execute them — across the tools you
+            already use.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <a
               href="#contact"
               className="inline-flex items-center justify-center gap-2 bg-dark text-white px-7 py-3.5 rounded-full text-sm font-medium hover:bg-dark/90 transition-all duration-200 hover:translate-y-[-1px]"
@@ -49,6 +49,9 @@ export default function Hero() {
               Book a Call
             </a>
           </div>
+          <p className="text-sm text-light">
+            Problem first. Software second.
+          </p>
         </motion.div>
       </div>
     </section>

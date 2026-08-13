@@ -12,8 +12,7 @@ export default function Footer() {
               ShipLab
             </a>
             <p className="text-sm text-muted mt-3 max-w-[280px] leading-relaxed">
-              Custom AI software for businesses. We find costly gaps and build
-              systems to solve them.
+              AI systems that turn repetitive business work into software.
             </p>
           </div>
           <div>

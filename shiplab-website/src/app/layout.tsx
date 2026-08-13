@@ -9,32 +9,32 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ShipLab — Custom AI Software for Businesses",
+  title: "ShipLab — AI Systems for Business Workflows",
   description:
-    "ShipLab finds costly gaps in your business and builds AI-powered systems to solve them — from lead recovery and AI receptionists to custom internal software.",
+    "ShipLab finds costly, repetitive workflows in your business and builds AI-powered systems that execute them — across the tools you already use.",
   keywords: [
-    "AI software",
-    "custom AI",
-    "business automation",
+    "AI workflow automation",
+    "business AI systems",
     "AI receptionist",
-    "lead recovery",
-    "dental AI",
-    "medspa AI",
-    "business systems",
+    "lead qualification",
+    "business automation",
+    "AI voice agents",
+    "workflow engineering",
+    "business process automation",
   ],
   openGraph: {
-    title: "ShipLab — Custom AI Software for Businesses",
+    title: "ShipLab — AI Systems for Business Workflows",
     description:
-      "We solve business problems with custom AI-powered software. From lead recovery to AI receptionists to custom internal tools.",
+      "ShipLab finds costly, repetitive workflows in your business and builds AI-powered systems that execute them — across the tools you already use.",
     type: "website",
     url: "https://shiplab.dev",
     siteName: "ShipLab",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ShipLab — Custom AI Software for Businesses",
+    title: "ShipLab — AI Systems for Business Workflows",
     description:
-      "We solve business problems with custom AI-powered software.",
+      "ShipLab finds costly, repetitive workflows in your business and builds AI-powered systems that execute them.",
   },
   robots: {
     index: true,
