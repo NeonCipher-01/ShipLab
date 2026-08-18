@@ -4,24 +4,20 @@ import { motion } from "framer-motion";
 
 const steps = [
   {
-    label: "Business Problem",
-    description: "What's repeatedly costing you time, money, or opportunities?",
+    label: "Real Problem",
+    description: "Understand what's actually worth solving.",
   },
   {
-    label: "Workflow",
-    description: "How does your team actually solve it today?",
+    label: "Product Strategy",
+    description: "Define the MVP, users, workflow, and core features.",
   },
   {
-    label: "AI System",
-    description: "What should software understand, decide, and execute?",
-  },
-  {
-    label: "Working System",
-    description: "We integrate it into your existing operations.",
+    label: "Working Software",
+    description: "Build and deploy a production-ready product.",
   },
   {
     label: "Continuous Improvement",
-    description: "We improve it based on real usage and results.",
+    description: "Use real feedback to improve what we built.",
   },
 ];
 
@@ -43,9 +39,9 @@ export default function Approach() {
               Problem first. Software second.
             </h2>
             <p className="text-muted leading-relaxed mb-8">
-              We don&apos;t start with an AI model. We start with what is
-              costing your business time or money — then engineer the right
-              system around it.
+              We don&apos;t start by choosing a framework or adding AI because
+              it&apos;s trendy. We start by understanding the problem, then build
+              the simplest software that solves it.
             </p>
             <div className="flex items-center gap-4 p-5 border border-border">
               <div className="w-10 h-10 rounded-full bg-dark flex items-center justify-center flex-shrink-0">
@@ -64,8 +60,8 @@ export default function Approach() {
                 </svg>
               </div>
               <p className="text-sm font-medium">
-                Every system starts with understanding your business — not
-                picking a tool.
+                Every product starts with understanding the problem — not
+                picking a framework.
               </p>
             </div>
           </motion.div>

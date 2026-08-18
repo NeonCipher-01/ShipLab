@@ -9,32 +9,32 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ShipLab — AI Systems for Business Workflows",
+  title: "ShipLab — AI Product Development Studio",
   description:
-    "ShipLab finds costly, repetitive workflows in your business and builds AI-powered systems that execute them — across the tools you already use.",
+    "ShipLab helps founders and businesses turn ideas into production-ready AI MVPs, SaaS products, agents, and internal tools.",
   keywords: [
-    "AI workflow automation",
-    "business AI systems",
-    "AI receptionist",
-    "lead qualification",
-    "business automation",
-    "AI voice agents",
-    "workflow engineering",
-    "business process automation",
+    "AI MVP development",
+    "SaaS product development",
+    "AI agents",
+    "AI product studio",
+    "MVP development",
+    "AI software development",
+    "full-stack development",
+    "AI product engineering",
   ],
   openGraph: {
-    title: "ShipLab — AI Systems for Business Workflows",
+    title: "ShipLab — AI Product Development Studio",
     description:
-      "ShipLab finds costly, repetitive workflows in your business and builds AI-powered systems that execute them — across the tools you already use.",
+      "ShipLab helps founders and businesses turn ideas into production-ready AI MVPs, SaaS products, agents, and internal tools.",
     type: "website",
     url: "https://shiplab.dev",
     siteName: "ShipLab",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ShipLab — AI Systems for Business Workflows",
+    title: "ShipLab — AI Product Development Studio",
     description:
-      "ShipLab finds costly, repetitive workflows in your business and builds AI-powered systems that execute them.",
+      "ShipLab helps founders and businesses turn ideas into production-ready AI MVPs, SaaS products, agents, and internal tools.",
   },
   robots: {
     index: true,

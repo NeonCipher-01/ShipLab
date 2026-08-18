@@ -4,20 +4,20 @@ import { motion } from "framer-motion";
 
 const stages = [
   {
-    label: "Custom System",
-    description: "Built around one company's specific workflow.",
+    label: "Custom Solution",
+    description: "Built for one specific problem.",
   },
   {
     label: "Reusable System",
-    description: "The same problem appears across multiple businesses.",
+    description: "Patterns and components that can be reused.",
   },
   {
     label: "Productized Software",
-    description: "The solution becomes standardized.",
+    description: "A repeatable solution for a broader market.",
   },
   {
     label: "SaaS",
-    description: "A scalable product built around a proven problem.",
+    description: "A scalable product built for many users.",
   },
 ];
 
@@ -36,12 +36,12 @@ export default function LongTermModel() {
               Long-Term Model
             </p>
             <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-              Build once. Learn from every deployment.
+              Built to compound.
             </h2>
             <p className="text-muted leading-relaxed">
-              ShipLab starts by solving real business problems. Repeated
-              problems become reusable systems. Reusable systems become
-              products.
+              Every project can become more valuable over time. A custom
+              solution can become a reusable system, a reusable system can
+              become a product, and a proven product can become SaaS.
             </p>
           </motion.div>
 

@@ -4,24 +4,28 @@ import { motion } from "framer-motion";
 
 const outcomes = [
   {
-    title: "More Captured Opportunities",
-    description: "Every appropriate inquiry gets handled instead of waiting for a human.",
+    title: "Ship Faster",
+    description:
+      "Move from idea to working software without unnecessary complexity.",
   },
   {
-    title: "Faster Response",
-    description: "Customers and leads get the right response when it matters.",
+    title: "Validate Earlier",
+    description:
+      "Get your product in front of real users and learn before overbuilding.",
   },
   {
-    title: "Less Manual Work",
-    description: "Your team spends less time performing repetitive operational tasks.",
+    title: "Automate Work",
+    description: "Let software and AI handle repetitive processes.",
   },
   {
-    title: "Better Connected Systems",
-    description: "Information moves between your existing tools without constant human intervention.",
+    title: "Build Smarter",
+    description:
+      "Use modern AI and full-stack technology where it creates real value.",
   },
   {
-    title: "Better Customer Experience",
-    description: "Customers receive faster, more consistent interactions.",
+    title: "Create Leverage",
+    description:
+      "Turn repeated workflows into reusable software and eventually products.",
   },
 ];
 
@@ -40,7 +44,7 @@ export default function Outcomes() {
             Business Outcomes
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-            What changes when the work starts running itself.
+            What changes when you ship the right product.
           </h2>
           <p className="text-muted leading-relaxed">
             Measurable improvements to how your business runs and grows.

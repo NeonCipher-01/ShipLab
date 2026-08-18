@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { label: "Problems", href: "#problems" },
   { label: "What We Build", href: "#what-we-build" },
-  { label: "Industries", href: "#industries" },
+  { label: "For Who", href: "#industries" },
   { label: "Approach", href: "#approach" },
 ];
 
@@ -48,7 +48,7 @@ export default function Navigation() {
             href="#contact"
             className="text-sm font-medium bg-dark text-white px-5 py-2.5 rounded-full hover:bg-dark/90 transition-all duration-200"
           >
-            Tell Us Your Problem
+            Start a Project
           </a>
         </div>
 
@@ -102,7 +102,7 @@ export default function Navigation() {
                 onClick={() => setIsOpen(false)}
                 className="text-sm font-medium bg-dark text-white px-5 py-3 rounded-full text-center mt-2"
               >
-                Tell Us Your Problem
+                Start a Project
               </a>
             </div>
           </motion.div>

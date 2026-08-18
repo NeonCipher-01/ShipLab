@@ -7,6 +7,7 @@ import IndustryExamples from "@/components/IndustryExamples";
 import Outcomes from "@/components/Outcomes";
 import Approach from "@/components/Approach";
 import LongTermModel from "@/components/LongTermModel";
+import Projects from "@/components/Projects";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -23,6 +24,7 @@ export default function Home() {
         <Outcomes />
         <Approach />
         <LongTermModel />
+        <Projects />
         <FinalCTA />
       </main>
       <Footer />

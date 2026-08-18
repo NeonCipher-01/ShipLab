@@ -12,7 +12,7 @@ export default function Footer() {
               ShipLab
             </a>
             <p className="text-sm text-muted mt-3 max-w-[280px] leading-relaxed">
-              AI systems that turn repetitive business work into software.
+              AI product development for founders, startups, and businesses.
             </p>
           </div>
           <div>
@@ -23,7 +23,7 @@ export default function Footer() {
               {[
                 { label: "Problems", href: "#problems" },
                 { label: "What We Build", href: "#what-we-build" },
-                { label: "Industries", href: "#industries" },
+                { label: "For Who", href: "#industries" },
                 { label: "Approach", href: "#approach" },
                 { label: "Contact", href: "#contact" },
               ].map((link) => (

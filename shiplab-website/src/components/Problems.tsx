@@ -4,34 +4,34 @@ import { motion } from "framer-motion";
 
 const problems = [
   {
-    title: "Missed Opportunities",
+    title: "From Idea to MVP",
     description:
-      "Calls go unanswered. Leads go cold. Customers move to the competitor.",
+      "Turn an idea into a working product without spending months building the wrong thing.",
   },
   {
-    title: "Slow Follow-Up",
+    title: "AI That Actually Works",
     description:
-      "Your team can't respond to every inquiry instantly. Valuable opportunities disappear.",
+      "Move beyond AI demos and build agents and AI features that work inside real products.",
   },
   {
-    title: "Repetitive Work",
+    title: "Too Much Manual Work",
     description:
-      "Employees spend hours reading, copying, updating, checking, and following up.",
+      "Replace repetitive workflows with software and AI systems that handle the work automatically.",
   },
   {
-    title: "Manual Data Entry",
+    title: "Disconnected Tools",
     description:
-      "Information moves from emails and forms into CRMs, calendars, spreadsheets, and other systems by hand.",
+      "Connect your existing tools, APIs, data, and workflows into one reliable system.",
   },
   {
-    title: "Disconnected Systems",
+    title: "Need to Ship Faster",
     description:
-      "Your CRM, calendar, communication tools, and internal software don't work together.",
+      "Go from concept to working product without building an unnecessary amount of infrastructure.",
   },
   {
-    title: "Customer Operations",
+    title: "Ready to Productize",
     description:
-      "Your team repeatedly answers the same questions, collects the same information, and performs the same processes.",
+      "Turn proven workflows and custom solutions into reusable software and eventually SaaS.",
   },
 ];
 
@@ -50,12 +50,12 @@ export default function Problems() {
             The Problem
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-            Your business has work that shouldn&apos;t require a human.
+            Good ideas don&apos;t matter if they never ship.
           </h2>
           <p className="text-muted leading-relaxed">
-            Most businesses lose time and revenue not because they lack software
-            — but because people still have to manually move work between
-            systems.
+            Ideas are easy. Turning them into a working product is the hard
+            part. ShipLab helps turn concepts, workflows, and product ideas into
+            software people can actually use.
           </p>
         </motion.div>
 

@@ -4,28 +4,31 @@ import { motion } from "framer-motion";
 
 const industries = [
   {
-    name: "Dental Clinics",
-    pipeline: [
-      "Missed Call",
-      "AI Receptionist",
-      "Patient Qualification",
-      "Appointment Booking",
-      "CRM Update",
-    ],
-    description:
-      "Missed calls and slow follow-up turn potential patients into lost revenue.",
+    name: "Founders",
+    pipeline: ["Idea", "MVP Scope", "Prototype", "Working Product", "Launch"],
+    description: "Turn an idea into a working MVP.",
   },
   {
-    name: "MedSpas",
+    name: "Startups",
     pipeline: [
-      "Inquiry",
-      "AI Conversation",
-      "Intent & Treatment Qualification",
-      "Follow-Up",
-      "Consultation Booking",
+      "Product Vision",
+      "AI Integration",
+      "MVP Build",
+      "Ship",
+      "Iterate",
     ],
-    description:
-      "Treatment inquiries and old customers require constant follow-up.",
+    description: "Build and ship AI-powered product features faster.",
+  },
+  {
+    name: "Businesses",
+    pipeline: [
+      "Workflow Audit",
+      "Solution Design",
+      "Custom Software",
+      "Deploy",
+      "Automate",
+    ],
+    description: "Replace manual workflows with custom AI software.",
   },
 ];
 
@@ -41,18 +44,18 @@ export default function IndustryExamples() {
           className="max-w-[600px] mb-16"
         >
           <p className="text-xs font-medium tracking-[0.15em] uppercase text-muted mb-4">
-            Industries
+            Built For Real Problems
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-            The problems repeat. The workflows don&apos;t have to.
+            From startups to established businesses.
           </h2>
           <p className="text-muted leading-relaxed">
-            These are examples of where we can apply AI systems — not
-            limitations.
+            The technology adapts to the problem. We build software around the
+            workflow, users, and outcome — not around a specific industry.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {industries.map((industry, i) => (
             <motion.div
               key={industry.name}
@@ -107,8 +110,8 @@ export default function IndustryExamples() {
             Other Businesses
           </h3>
           <p className="text-sm text-muted leading-relaxed mb-6">
-            The same principle applies anywhere people repeatedly perform the
-            same workflow.
+            The same principle applies anywhere people need better software to
+            solve real problems.
           </p>
           <div className="flex flex-wrap gap-3">
             {[

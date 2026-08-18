@@ -5,28 +5,29 @@ import { useState } from "react";
 
 const steps = [
   {
-    label: "Find",
-    description: "We identify the workflow costing your business time or money.",
+    label: "Discover",
+    description:
+      "Understand the problem, users, workflow, and desired outcome.",
   },
   {
-    label: "Understand",
+    label: "Plan",
     description:
-      "We map how the work actually happens — people, tools, rules, and exceptions.",
+      "Define the MVP scope, architecture, AI components, and technical approach.",
   },
   {
-    label: "Engineer",
+    label: "Build",
     description:
-      "We design an AI-powered system around the workflow, not around a trendy tool.",
+      "Develop the product, AI features, integrations, and core workflows.",
   },
   {
-    label: "Deploy",
+    label: "Launch",
     description:
-      "We connect it to your existing software and put it into production.",
+      "Deploy a production-ready version that real users can actually use.",
   },
   {
     label: "Improve",
     description:
-      "We measure what happens in the real world and continuously improve the system.",
+      "Use real feedback and usage data to iterate and improve the product.",
   },
 ];
 
@@ -47,7 +48,7 @@ export default function HowItWorks() {
             How It Works
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em]">
-            From business problem to working system.
+            From idea to production.
           </h2>
         </motion.div>
 

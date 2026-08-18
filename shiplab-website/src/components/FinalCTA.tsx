@@ -31,19 +31,19 @@ export default function FinalCTA() {
               Get Started
             </p>
             <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-              What work is costing your business time or money?
+              Have an idea worth building?
             </h2>
             <p className="text-muted leading-relaxed mb-8">
-              Tell us about one repetitive workflow, bottleneck, or lost
-              opportunity. We&apos;ll tell you whether an AI system can actually
-              solve it.
+              Whether you have a SaaS idea, AI product, internal tool, or
+              workflow that needs better software, let&apos;s turn it into
+              something real.
             </p>
             <div className="flex flex-col gap-4">
               <a
                 href="#contact-form"
                 className="inline-flex items-center justify-center gap-2 bg-dark text-white px-7 py-3.5 rounded-full text-sm font-medium hover:bg-dark/90 transition-all duration-200 hover:translate-y-[-1px]"
               >
-                Tell Us Your Problem
+                Start a Project
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -64,7 +64,7 @@ export default function FinalCTA() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 border border-border px-7 py-3.5 rounded-full text-sm font-medium hover:border-dark/30 transition-all duration-200"
               >
-                Book a Call
+                View Projects
               </a>
               <p className="text-sm text-light">
                 Or email us at{" "}
@@ -139,7 +139,7 @@ export default function FinalCTA() {
                   setFormState({ ...formState, business: e.target.value })
                 }
                 className="w-full px-4 py-3 bg-card border border-border text-sm focus:outline-none focus:border-dark/30 transition-colors"
-                placeholder="e.g. Dental clinic, MedSpa, Agency, Logistics"
+                placeholder="e.g. SaaS idea, AI agent, internal tool, MVP"
               />
             </div>
             <div>
@@ -157,7 +157,7 @@ export default function FinalCTA() {
                   setFormState({ ...formState, problem: e.target.value })
                 }
                 className="w-full px-4 py-3 bg-card border border-border text-sm focus:outline-none focus:border-dark/30 transition-colors resize-none"
-                placeholder="Tell us about the repetitive work, bottleneck, or lost opportunity you're dealing with."
+                placeholder="Tell us about the idea, product, or workflow you want to build."
                 required
               />
             </div>
@@ -165,10 +165,10 @@ export default function FinalCTA() {
               type="submit"
               className="w-full bg-dark text-white px-7 py-3.5 rounded-full text-sm font-medium hover:bg-dark/90 transition-all duration-200"
             >
-              Tell Us Your Problem
+              Start a Project
             </button>
             <p className="text-xs text-light text-center">
-              We&apos;ll review your problem and get back to you within 24 hours.
+              We&apos;ll review your idea and get back to you within 24 hours.
             </p>
           </motion.form>
         </div>

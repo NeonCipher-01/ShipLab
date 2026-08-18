@@ -4,55 +4,46 @@ import { motion } from "framer-motion";
 
 const categories = [
   {
-    title: "Revenue Systems",
-    description:
-      "Turn more opportunities into customers.",
+    title: "AI MVPs",
+    description: "Turn product ideas into working MVPs ready for real users.",
     examples: [
-      "Lead qualification",
-      "Lead follow-up",
-      "Lead recovery",
-      "Customer reactivation",
-      "Appointment booking",
-      "Sales workflow automation",
+      "AI-powered web applications",
+      "MVP development",
+      "AI feature integration",
+      "Rapid prototypes",
     ],
   },
   {
-    title: "Operations Systems",
+    title: "SaaS Products",
     description:
-      "Remove repetitive work from your team.",
+      "Build the foundation for subscription-based software products.",
     examples: [
-      "Email processing",
-      "Document processing",
-      "Data entry",
-      "Internal approvals",
-      "Workflow automation",
-      "Cross-system synchronization",
+      "SaaS applications",
+      "Dashboards & platforms",
+      "Authentication & billing",
+      "APIs & backend systems",
     ],
   },
   {
-    title: "Customer Systems",
+    title: "AI Agents",
     description:
-      "Handle customer interactions without adding more people.",
+      "Build AI agents that can reason, use tools, and complete real tasks.",
     examples: [
-      "AI receptionists",
+      "AI chat agents",
       "Voice agents",
-      "Customer support",
-      "Intelligent intake",
-      "Call routing",
-      "Appointment management",
+      "Tool-using agents",
+      "Agent workflows",
     ],
   },
   {
-    title: "Custom AI Software",
+    title: "Internal Tools & Automation",
     description:
-      "When your workflow needs software built specifically for it.",
+      "Build software that removes repetitive work and connects existing systems.",
     examples: [
-      "Internal applications",
-      "Dashboards",
-      "AI-powered tools",
-      "Custom APIs",
-      "Business intelligence",
-      "Industry-specific software",
+      "Internal dashboards",
+      "Workflow automation",
+      "API integrations",
+      "Data processing systems",
     ],
   },
 ];
@@ -72,10 +63,10 @@ export default function WhatWeBuild() {
             What We Build
           </p>
           <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-0.02em] mb-6">
-            AI systems that do the work — not isolated AI features.
+            AI-powered products and software built around real problems.
           </h2>
           <p className="text-muted leading-relaxed">
-            Every ShipLab system is built around a real business workflow.
+            Every ShipLab system is built around a real problem.
           </p>
         </motion.div>
 
